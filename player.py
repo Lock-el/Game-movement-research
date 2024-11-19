@@ -32,7 +32,6 @@ class Player(Entity):
         super().update(delta_time)
 
     def jump(self):
-        # Le joueur saute uniquement s'il est au sol
         if self.on_ground:
             self.apply_force(pygame.math.Vector2(0, -self.JUMP_FORCE))
             self.on_ground = False
@@ -42,7 +41,7 @@ class Player(Entity):
             self.apply_force(pygame.math.Vector2(0, -self.BOOST_POWER))
             self.boost_amount -= 0.5
 
-    def plane(self, delta_time):
+    def plane(self, delta_time):    #fonction non aboutie, le but est d'imiter le comportement d'un planneur
         coef = 2
         #self.rect.topleft += self.velocity * delta_time * 60
         if self.direction[1] > 0 :
@@ -57,7 +56,7 @@ class Player(Entity):
 
     def keyboard_control(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LSHIFT]:
+        if keys[pygame.K_f]:
             self.is_planing = True
         else: self.is_planing = False
 
@@ -67,7 +66,7 @@ class Player(Entity):
             if keys[pygame.K_z]: self.apply_force(pygame.math.Vector2(0, -self.SPEED[1]))
             if keys[pygame.K_s]: self.apply_force(pygame.math.Vector2(0, self.SPEED[1]))
 
-            if keys[pygame.K_SPACE]: self.boost()
+            if keys[pygame.K_LSHIFT]: self.boost()
         else :
             if keys[pygame.K_q]: self.direction[0] = -1
             if keys[pygame.K_d]: self.direction[0] = 1
