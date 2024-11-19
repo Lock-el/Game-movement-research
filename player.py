@@ -48,7 +48,7 @@ class Player(Entity):
             self.force_x = self.direction[1] / coef
         print(self.force_x)
           # * self.velocity[0]
-        self.force_y = self.direction[1] / coef - self.GRAVITY
+        self.force_y = self.direction[1] / coef - self.GRAVITY #ou comme ça
         self.apply_force(pygame.math.Vector2(self.force_x,self.force_y)) #mieux comme ça
         
 
